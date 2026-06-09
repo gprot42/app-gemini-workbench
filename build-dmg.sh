@@ -2,6 +2,8 @@
 set -e
 
 APP_NAME="Gemini Workbench"
+SCRIPT_DIR_EARLY="$(cd "$(dirname "$0")" && pwd)"
+node "$SCRIPT_DIR_EARLY/scripts/sync-version.mjs" >/dev/null
 VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": "\([^"]*\)".*/\1/')
 ARCH=$(uname -m)
 DMG_NAME="Gemini-Workbench_${VERSION}_${ARCH}"
