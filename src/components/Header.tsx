@@ -8,8 +8,8 @@ import { Settings, FolderOpen, Info, Menu, Sun, Moon, Palette } from "lucide-rea
 interface HeaderProps {
   theme: ThemeMode;
   onThemeChange: (theme: ThemeMode) => void;
-  activeTab: "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "tts" | "stt";
-  onTabChange: (tab: "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "tts" | "stt") => void;
+  activeTab: "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "stt" | "tts";
+  onTabChange: (tab: "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "stt" | "tts") => void;
   onShowSettings: () => void;
   onShowProjects: () => void;
   onShowAbout: () => void;
@@ -60,7 +60,7 @@ export function Header({
             </Badge>
           )}
 
-          <Tabs value={activeTab} onValueChange={(v) => onTabChange(v as "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "tts" | "stt")}>
+          <Tabs value={activeTab} onValueChange={(v) => onTabChange(v as "chat" | "image" | "research" | "parser" | "code" | "video" | "rag" | "live" | "stt" | "tts")}>
             <TabsList className="grid grid-cols-10 w-[1060px]">
               <TabsTrigger value="chat" className="gap-1.5">
                 💬 Prompt
@@ -74,11 +74,14 @@ export function Header({
               <TabsTrigger value="video" className="gap-1.5">
                 🎬 Video
               </TabsTrigger>
-              <TabsTrigger value="tts" className="gap-1.5">
-                🔊 TTS
+              <TabsTrigger value="live" className="gap-1.5">
+                🎙️ Live
               </TabsTrigger>
               <TabsTrigger value="stt" className="gap-1.5">
                 📝 STT
+              </TabsTrigger>
+              <TabsTrigger value="tts" className="gap-1.5">
+                🔊 TTS
               </TabsTrigger>
               <TabsTrigger value="research" className="gap-1.5">
                 🔬 Research
@@ -88,9 +91,6 @@ export function Header({
               </TabsTrigger>
               <TabsTrigger value="code" className="gap-1.5">
                 🖥️ Code
-              </TabsTrigger>
-              <TabsTrigger value="live" className="gap-1.5">
-                🎙️ Live
               </TabsTrigger>
             </TabsList>
           </Tabs>
