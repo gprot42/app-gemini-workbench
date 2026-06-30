@@ -84,6 +84,12 @@ echo "[2/5] Installing frontend dependencies..."
 echo "------------------------------------------------"
 $PKG_MGR install
 
+# Keep Tauri npm packages in sync with Rust crate versions to avoid
+# the "Found version mismatched Tauri packages" error from cargo tauri build.
+if [ "$PKG_MGR" = "bun" ]; then
+    bun update @tauri-apps/api @tauri-apps/plugin-fs @tauri-apps/plugin-dialog 2>/dev/null || true
+fi
+
 echo ""
 echo "[3/5] Building frontend..."
 echo "------------------------------------------------"
