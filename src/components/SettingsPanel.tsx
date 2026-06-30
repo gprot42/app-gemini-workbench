@@ -573,7 +573,7 @@ export function SettingsPanel({
                   ]).map(({ value, icon, label }) => (
                     <Button
                       key={value}
-                      variant={settings.theme === value ? "default" : "ghost"}
+                      variant={settings.theme === value ? "primary" : "ghost"}
                       size="sm"
                       onClick={() => onUpdateSettings({ theme: value })}
                       className="h-8 px-3 gap-1.5"
