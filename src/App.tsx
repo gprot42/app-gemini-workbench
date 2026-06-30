@@ -66,7 +66,7 @@ function App() {
   const [showProjects, setShowProjects] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [selectedModel, setSelectedModel] = useState("claude-opus-4-8");
-  const [selectedImageModel, setSelectedImageModel] = useState<"nano-banana-pro" | "nano-banana-2">("nano-banana-pro");
+  const [selectedImageModel, setSelectedImageModel] = useState<"nano-banana-pro" | "nano-banana-2" | "nano-banana-2-lite">("nano-banana-pro");
   const [selectedEndpoint, setSelectedEndpoint] = useState<EndpointType>("vertex_ai");
   const [use1MContext, setUse1MContext] = useState(false);
   const [useMemory, setUseMemory] = useState(false);
@@ -256,6 +256,16 @@ function App() {
               >
                 v2
               </button>
+              <button
+                onClick={() => setSelectedImageModel("nano-banana-2-lite")}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${
+                  selectedImageModel === "nano-banana-2-lite"
+                    ? "bg-lime-400 text-lime-950 shadow-sm ring-1 ring-lime-500/30"
+                    : "theme-text-muted hover:theme-text"
+                }`}
+              >
+                v2 Lite
+              </button>
             </div>
             <div className="text-xs theme-text-muted italic">
               {MODELS[selectedImageModel]?.description}
@@ -385,8 +395,8 @@ function App() {
             onClearImages={_clearImages}
             imageModelId={MODELS[selectedImageModel]?.aiStudioModelId}
             imageModelName={MODELS[selectedImageModel]?.displayName}
-            altModelId={MODELS[selectedImageModel === "nano-banana-pro" ? "nano-banana-2" : "nano-banana-pro"]?.aiStudioModelId}
-            altModelName={MODELS[selectedImageModel === "nano-banana-pro" ? "nano-banana-2" : "nano-banana-pro"]?.displayName}
+            altModelId={MODELS[selectedImageModel === "nano-banana-pro" ? "nano-banana-2" : selectedImageModel === "nano-banana-2" ? "nano-banana-2-lite" : "nano-banana-2"]?.aiStudioModelId}
+            altModelName={MODELS[selectedImageModel === "nano-banana-pro" ? "nano-banana-2" : selectedImageModel === "nano-banana-2" ? "nano-banana-2-lite" : "nano-banana-2"]?.displayName}
           />
         ) : activeTab === "research" ? (
           <>
